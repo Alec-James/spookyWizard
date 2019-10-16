@@ -255,18 +255,18 @@ public class dungeonConstruction : MonoBehaviour
 	
 	public void constructPerimeter(){
 		for(int z = 0; z <= zGridSize-1; z++){
-			float zNorthAdj = -0.35f + xGridSize;
-			Vector3 posSouthWall = new Vector3(-0.65f, 0.25f, z);
-			Vector3 posNorthWall = new Vector3(zNorthAdj, 0.25f, z);
+			float zNorthAdj = -3.5f + (xGridSize*10);
+			Vector3 posSouthWall = new Vector3(-6f, 2.5f, (z*10));
+			Vector3 posNorthWall = new Vector3(zNorthAdj, 0.25f, (z*10));
 			if(z != 0)
 				Instantiate(sideWallH, posSouthWall, sideWallH.transform.rotation);
 			if(z != (zGridSize-1))
 				Instantiate(sideWallH, posNorthWall, sideWallH.transform.rotation);
 		}
 		for(int x = 0; x <= xGridSize-1; x++){
-			float xWestAdj = -0.35f + zGridSize;
-			Vector3 posEastWall = new Vector3(x, 0.25f, -0.65f);
-			Vector3 posWestWall = new Vector3(x, 0.25f, xWestAdj);
+			float xWestAdj = -3.5f + (zGridSize*10);
+			Vector3 posEastWall = new Vector3((x*10), 2.5f, -6f);
+			Vector3 posWestWall = new Vector3((x*10), 2.5f, xWestAdj);
 			Instantiate(sideWallV, posEastWall, sideWallV.transform.rotation);
 			Instantiate(sideWallV, posWestWall, sideWallV.transform.rotation);
 		}
@@ -436,15 +436,15 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 1: A tile going all 4 directions (intersection).
 	public void placeTypeOne(int x, int z){
 		Debug.Log("Placed Type 1");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 pillarPosNE = new Vector3(xAdjPos, 0.25f, zAdjNeg);
-		Vector3 pillarPosNW = new Vector3(xAdjPos, 0.25f, zAdjPos);
-		Vector3 pillarPosSW = new Vector3(xAdjNeg, 0.25f, zAdjPos);
-		Vector3 pillarPosSE = new Vector3(xAdjNeg, 0.25f, zAdjNeg);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 pillarPosNE = new Vector3(xAdjPos, 2.5f, zAdjNeg);
+		Vector3 pillarPosNW = new Vector3(xAdjPos, 2.5f, zAdjPos);
+		Vector3 pillarPosSW = new Vector3(xAdjNeg, 2.5f, zAdjPos);
+		Vector3 pillarPosSE = new Vector3(xAdjNeg, 2.5f, zAdjNeg);
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(cornerWall, pillarPosNE, Quaternion.identity);
 		Instantiate(cornerWall, pillarPosNW, Quaternion.identity);
@@ -455,14 +455,14 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 2: A tile going south/north and east.
 	public void placeTypeTwo(int x, int z){
 		Debug.Log("Placed Type 2");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 pillarPosNE = new Vector3(xAdjPos, 0.25f, zAdjNeg);
-		Vector3 pillarPosSE = new Vector3(xAdjNeg, 0.25f, zAdjNeg);
-		Vector3 wallPosW = new Vector3(x, 0.25f, zAdjPos);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 pillarPosNE = new Vector3(xAdjPos, 2.5f, zAdjNeg);
+		Vector3 pillarPosSE = new Vector3(xAdjNeg, 2.5f, zAdjNeg);
+		Vector3 wallPosW = new Vector3((x*10), 2.5f, zAdjPos);
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallV, wallPosW, Quaternion.identity);
 		Instantiate(cornerWall, pillarPosSE, Quaternion.identity);
@@ -472,14 +472,14 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 3: A tile going south/north and west.
 	public void placeTypeThree(int x, int z){
 		Debug.Log("Placed Type 3");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 pillarPosNW = new Vector3(xAdjPos, 0.25f, zAdjPos);
-		Vector3 pillarPosSW = new Vector3(xAdjNeg, 0.25f, zAdjPos);
-		Vector3 wallPosE = new Vector3(x, 0.25f, zAdjNeg);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 pillarPosNW = new Vector3(xAdjPos, 2.5f, zAdjPos);
+		Vector3 pillarPosSW = new Vector3(xAdjNeg, 2.5f, zAdjPos);
+		Vector3 wallPosE = new Vector3((x*10), 2.5f, zAdjNeg);
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallV, wallPosE, Quaternion.identity);
 		Instantiate(cornerWall, pillarPosSW, Quaternion.identity);
@@ -489,14 +489,14 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 4: A tile going east/west and north.
 	public void placeTypeFour(int x, int z){
 		Debug.Log("Placed Type 4");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 pillarPosNE = new Vector3(xAdjPos, 0.25f, zAdjNeg);
-		Vector3 pillarPosNW = new Vector3(xAdjPos, 0.25f, zAdjPos);
-		Vector3 wallPosS = new Vector3(xAdjNeg, 0.25f, z);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 pillarPosNE = new Vector3(xAdjPos, 2.5f, zAdjNeg);
+		Vector3 pillarPosNW = new Vector3(xAdjPos, 2.5f, zAdjPos);
+		Vector3 wallPosS = new Vector3(xAdjNeg, 2.5f, (z*10));
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallH, wallPosS, sideWallH.transform.rotation);
 		Instantiate(cornerWall, pillarPosNE, Quaternion.identity);
@@ -506,14 +506,14 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 5: A tile going east/west and south.
 	public void placeTypeFive(int x, int z){
 		Debug.Log("Placed Type 5");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 pillarPosSW = new Vector3(xAdjNeg, 0.25f, zAdjPos);
-		Vector3 pillarPosSE = new Vector3(xAdjNeg, 0.25f, zAdjNeg);
-		Vector3 wallPosN = new Vector3(xAdjPos, 0.25f, z);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 pillarPosSW = new Vector3(xAdjNeg, 2.5f, zAdjPos);
+		Vector3 pillarPosSE = new Vector3(xAdjNeg, 2.5f, zAdjNeg);
+		Vector3 wallPosN = new Vector3(xAdjPos, 2.5f, (z*10));
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallH, wallPosN, sideWallH.transform.rotation);
 		Instantiate(cornerWall, pillarPosSE, Quaternion.identity);
@@ -523,11 +523,13 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 6: A tile going east/west.
 	public void placeTypeSix(int x, int z){
 		Debug.Log("Placed Type 6");
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 wallPosN = new Vector3(xAdjPos, 0.25f, z);
-		Vector3 wallPosS = new Vector3(xAdjNeg, 0.25f, z);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 wallPosN = new Vector3(xAdjPos, 2.5f, (z*10));
+		Vector3 wallPosS = new Vector3(xAdjNeg, 2.5f, (z*10));
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallH, wallPosN, sideWallH.transform.rotation);
 		Instantiate(sideWallH, wallPosS, sideWallH.transform.rotation);
@@ -536,11 +538,13 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 7: A tile going north/south.
 	public void placeTypeSeven(int x, int z){
 		Debug.Log("Placed Type 7");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		Vector3 wallPosW = new Vector3(x, 0.25f, zAdjPos);
-		Vector3 wallPosE = new Vector3(x, 0.25f, zAdjNeg);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 wallPosW = new Vector3((x*10), 2.5f, zAdjPos);
+		Vector3 wallPosE = new Vector3((x*10), 2.5f, zAdjNeg);
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallV, wallPosE, Quaternion.identity);
 		Instantiate(sideWallV, wallPosW, Quaternion.identity);
@@ -549,14 +553,14 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 8: A 90 degree tile going south and west.`
 	public void placeTypeEight(int x, int z){
 		Debug.Log("Placed Type 8");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 wallPosN = new Vector3(xAdjPos, 0.25f, z);
-		Vector3 pillarPosSW = new Vector3(xAdjNeg, 0.25f, zAdjPos);
-		Vector3 wallPosE = new Vector3(x, 0.25f, zAdjNeg);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 wallPosN = new Vector3(xAdjPos, 2.5f, z);
+		Vector3 pillarPosSW = new Vector3(xAdjNeg, 2.5f, zAdjPos);
+		Vector3 wallPosE = new Vector3((x*10), 2.5f, zAdjNeg);
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallV, wallPosE, Quaternion.identity);
 		Instantiate(sideWallH, wallPosN, sideWallH.transform.rotation);
@@ -566,14 +570,14 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 9: A 90 degree tile going south and east.
 	public void placeTypeNine(int x, int z){
 		Debug.Log("Placed Type 9");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 wallPosN = new Vector3(xAdjPos, 0.25f, z);
-		Vector3 wallPosW = new Vector3(x, 0.25f, zAdjPos);
-		Vector3 pillarPosSE = new Vector3(xAdjNeg, 0.25f, zAdjNeg);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 wallPosN = new Vector3(xAdjPos, 2.5f, z);
+		Vector3 wallPosW = new Vector3((x*10), 2.5f, zAdjPos);
+		Vector3 pillarPosSE = new Vector3(xAdjNeg, 2.5f, zAdjNeg);
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallH, wallPosN, sideWallH.transform.rotation);
 		Instantiate(sideWallV, wallPosW, Quaternion.identity);
@@ -583,14 +587,14 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 10: A 90 degree tile going north and west.
 	public void placeTypeTen(int x, int z){
 		Debug.Log("Placed Type 10");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 pillarPosNW = new Vector3(xAdjPos, 0.25f, zAdjPos);
-		Vector3 wallPosE = new Vector3(x, 0.25f, zAdjNeg);
-		Vector3 wallPosS = new Vector3(xAdjNeg, 0.25f, z);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 pillarPosNW = new Vector3(xAdjPos, 2.5f, zAdjPos);
+		Vector3 wallPosE = new Vector3((x*10), 2.5f, zAdjNeg);
+		Vector3 wallPosS = new Vector3(xAdjNeg, 2.5f, (z*10));
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(cornerWall, pillarPosNW, Quaternion.identity);
 		Instantiate(sideWallV, wallPosE, Quaternion.identity);
@@ -600,14 +604,14 @@ public class dungeonConstruction : MonoBehaviour
 	//Type 11: A 90 degree tile going north and east.
 	public void placeTypeEleven(int x, int z){
 		Debug.Log("Placed Type 11");
-		float zAdjPos = 0.35f + z;
-		float zAdjNeg = -0.35f + z;
-		float xAdjPos = 0.35f + x;
-		float xAdjNeg = -0.35f + x;
-		Vector3 wallPosS = new Vector3(xAdjNeg, 0.25f, z);
-		Vector3 wallPosW = new Vector3(x, 0.25f, zAdjPos);
-		Vector3 pillarPosNE = new Vector3(xAdjPos, 0.25f, zAdjNeg);
-		Vector3 tilePos = new Vector3(x, 0, z);
+		float zAdjPos = 3.5f + (z*10);
+		float zAdjNeg = -3.5f + (z*10);
+		float xAdjPos = 3.5f + (x*10);
+		float xAdjNeg = -3.5f + (x*10);
+		Vector3 wallPosS = new Vector3(xAdjNeg, 2.5f, (z*10));
+		Vector3 wallPosW = new Vector3((x*10), 2.5f, zAdjPos);
+		Vector3 pillarPosNE = new Vector3(xAdjPos, 2.5f, zAdjNeg);
+		Vector3 tilePos = new Vector3((x*10), 0, (z*10));
 		Instantiate(floorTile, tilePos, Quaternion.identity);
 		Instantiate(sideWallH, wallPosS, sideWallH.transform.rotation);
 		Instantiate(cornerWall, pillarPosNE, Quaternion.identity);
