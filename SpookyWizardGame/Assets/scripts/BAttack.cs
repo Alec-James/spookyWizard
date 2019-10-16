@@ -9,7 +9,7 @@ public class BAttack : MonoBehaviour
     // Start is called before the first frame update
     public GameObject iceShot;
     public Transform LeftCast;
-    public GameObject player;
+    public Transform player;
     //layer = Gam
     void Start()
     {
@@ -19,7 +19,7 @@ public class BAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Random.Range(0, 100) > 75)
+        if (Random.Range(0, 100) > 90)
         {
             shootIce();
         }
@@ -29,9 +29,8 @@ public class BAttack : MonoBehaviour
     private void shootIce()
     {
         GameObject tempBullet;
-        Transform player;
         //player = playerPos;
         tempBullet = Instantiate(iceShot) as GameObject;
-        tempBullet.transform.position = transform.position + LeftCast.position;
+        tempBullet.transform.position = LeftCast.position;
     }
 }
