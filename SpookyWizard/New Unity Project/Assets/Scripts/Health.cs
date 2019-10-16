@@ -14,7 +14,8 @@ public class Health : MonoBehaviour
     {
         MaxHealth = 20f;
         CurrentHealth = MaxHealth;
-        healthbar.value = CalcHealth();
+        if(healthbar!=null)
+            healthbar.value = CalcHealth();
     }
 
     // Update is called once per frame
@@ -27,7 +28,8 @@ public class Health : MonoBehaviour
     void DealDamage(float dmg)
     {
         CurrentHealth -= dmg;
-        healthbar.value = CalcHealth();
+        if(healthbar!=null)
+            healthbar.value = CalcHealth();
         if (CurrentHealth <= 0)
         {
 
