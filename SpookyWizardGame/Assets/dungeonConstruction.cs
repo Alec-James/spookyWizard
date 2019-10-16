@@ -213,10 +213,14 @@ public class dungeonConstruction : MonoBehaviour
     {
 		dungeon = new mapGrid(xGridSize, zGridSize);
 		generateDungeon();
-		
-		//Update NavMesh
-		nmSurface.BuildNavMesh();
+
+        //Update NavMesh
+        nmSurface.BuildNavMesh();
+
+
     }
+
+
 
     // Update is called once per frame
     void Update()
