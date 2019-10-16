@@ -257,7 +257,7 @@ public class dungeonConstruction : MonoBehaviour
 		for(int z = 0; z <= zGridSize-1; z++){
 			float zNorthAdj = -3.5f + (xGridSize*10);
 			Vector3 posSouthWall = new Vector3(-6f, 2.5f, (z*10));
-			Vector3 posNorthWall = new Vector3(zNorthAdj, 0.25f, (z*10));
+			Vector3 posNorthWall = new Vector3(zNorthAdj, 2.5f, (z*10));
 			if(z != 0)
 				Instantiate(sideWallH, posSouthWall, sideWallH.transform.rotation);
 			if(z != (zGridSize-1))
