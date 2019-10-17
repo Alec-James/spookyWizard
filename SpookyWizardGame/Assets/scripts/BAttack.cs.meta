@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 030d381ea5c62794698e519ce3cd4626
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - iceShot: {fileID: 425593777844578056, guid: 65f2b0f5f07ab6643a5d333b78a1d6c3,
+      type: 3}
+  - LeftCast: {instanceID: 0}
+  - player: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
