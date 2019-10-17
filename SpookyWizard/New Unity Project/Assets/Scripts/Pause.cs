@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    //bool cursorLocked = false;
     void Start()
     {
         pauseMenuUI.SetActive(false);
@@ -18,10 +19,14 @@ public class Pause : MonoBehaviour
         {
             if (GameIsPaused)
             {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 Resume();
             }
             else
             {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 PauseM();
             }
         }
