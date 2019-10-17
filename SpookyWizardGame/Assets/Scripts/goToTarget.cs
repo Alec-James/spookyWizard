@@ -23,7 +23,7 @@ public class goToTarget : MonoBehaviour
     public static float normalPlayerRunSpeed = 6f;
     public static float slowPlayerWalkSpeed = 1.5f;
     public static float slowPlayerRunSpeed = 2f;
-    public static float timeOut = 5f;
+    public static float timeOut = 8f;
 
      
     
@@ -114,13 +114,14 @@ public class goToTarget : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collider other)
+    void OnTriggerEnter (Collider other)
     {
         // attack player and slow
         if (other.CompareTag("Player"))
         {
-
+            print("collision with " + target.tag);
             StartCoroutine(Pickup(other));
+            print("end effect " + target.tag);
 
         }
     }
