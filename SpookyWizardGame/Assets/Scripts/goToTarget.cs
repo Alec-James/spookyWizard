@@ -24,6 +24,7 @@ public class goToTarget : MonoBehaviour
     public static float slowPlayerRunSpeed = 2f;
     public static float timeOut = 5f;
 
+
     //public FirstPersonController charScript = targets[0].GetComponent<FirstPersonController>();
 
     // initialization
