@@ -119,9 +119,9 @@ public class goToTarget : MonoBehaviour
         // attack player and slow
         if (other.CompareTag("Player"))
         {
-            print("collision with " + target.tag);
+            //print("collision with " + target.tag);
             StartCoroutine(Pickup(other));
-            print("end effect " + target.tag);
+            //print("end effect " + target.tag);
 
         }
     }
