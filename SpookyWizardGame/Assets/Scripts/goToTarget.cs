@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using VHS;
 
 public class goToTarget : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class goToTarget : MonoBehaviour
     public static float slowPlayerRunSpeed = 2f;
     public static float timeOut = 5f;
 
-
-    //public FirstPersonController charScript = targets[0].GetComponent<FirstPersonController>();
+     
+    
 
     // initialization
     void Start()
@@ -113,35 +114,35 @@ public class goToTarget : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collider other)
     {
         // attack player and slow
-        if (other.collider.gameObject.tag.Equals("Player"))
+        if (other.CompareTag("Player"))
         {
 
-            //StartCoroutine(Pickup(other));
+            StartCoroutine(Pickup(other));
 
         }
     }
 
 
-    /*IEnumerator Pickup(Collider player)
+    IEnumerator Pickup(Collider player)
     {
         //Debug.Log("ONE");
 
-
+        FirstPersonController charScript = targets[0].GetComponent<FirstPersonController>();
 
         //apply player
 
-    charScript.walkSpeed = slowPlayerWalkSpeed;
-    charScript.runSpeed = slowPlayerRunSpeed;
+        charScript.walkSpeed = slowPlayerWalkSpeed;
+        charScript.runSpeed = slowPlayerRunSpeed;
 
-    yield return new WaitForSeconds(timeOut);
+        yield return new WaitForSeconds(timeOut);
 
-    charScript.walkSpeed = normalPlayerWalkSpeed;
-    charScript.runSpeed = normalPlayerRunSpeed;
+        charScript.walkSpeed = normalPlayerWalkSpeed;
+        charScript.runSpeed = normalPlayerRunSpeed;
 
-}*/
+    }
 
     Vector2 GetRandomOnCircle(float radius)
     {
