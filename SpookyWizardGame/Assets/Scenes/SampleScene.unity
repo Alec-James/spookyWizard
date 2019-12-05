@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.007430154, g: 0.0019049472, b: 0.00028239176, a: 1}
+  m_IndirectSpecularColor: {r: 0.44555545, g: 0.49523515, b: 0.5741309, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -49496,6 +49496,8 @@ MonoBehaviour:
   - {fileID: 110658, guid: a4cd3d5e9967248a69e6203d2ce67874, type: 3}
   floorTile: {fileID: 4854543744501447786, guid: aef730b824581bc43b9ed1f40954f517,
     type: 3}
+  bossRoomColliderTile: {fileID: 4854543744501447786, guid: 7da02dedfcb3f344da9f55ce5106004c,
+    type: 3}
   ceilingTile: {fileID: 4854543744501447786, guid: 6dc65769c611f16489c9b56beeda140b,
     type: 3}
   cornerWall: {fileID: 6023054917172216990, guid: db2e46a1247a40f4b8ae3a9242c3f97d,
@@ -49507,6 +49509,7 @@ MonoBehaviour:
   waterTrap: {fileID: 4854543744501447786, guid: 071aaf58341654e42b5a6e943b7fe381,
     type: 3}
   slime: {fileID: 0}
+  boss: {fileID: 0}
   bossDoor: {fileID: 1375891493485384, guid: f58dcf1faed060e48af3b1ad7c749ca9, type: 3}
   xGridSize: 10
   zGridSize: 10

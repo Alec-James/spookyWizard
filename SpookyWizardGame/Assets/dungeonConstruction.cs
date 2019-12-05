@@ -251,12 +251,14 @@ public class dungeonConstruction : MonoBehaviour
 	public NavMeshSurface nmSurface;
     public GameObject[] artifacts = new GameObject[3];
     public GameObject floorTile;
+    public GameObject bossRoomColliderTile;
     public GameObject ceilingTile;
 	public GameObject cornerWall;
 	public GameObject sideWallV;
 	public GameObject sideWallH;
     public GameObject waterTrap;
     public GameObject slime;
+    public GameObject boss;
     public GameObject bossDoor;
 	public mapGrid dungeon;
 	public int xGridSize;
@@ -397,6 +399,7 @@ public class dungeonConstruction : MonoBehaviour
         //Floor Tiles
         Vector3 tilePos = new Vector3((x * 10), 0, (z * 10));
         Instantiate(floorTile, tilePos, Quaternion.identity);
+        Instantiate(bossRoomColliderTile, tilePos, Quaternion.identity);
         tilePos = new Vector3(((x + 1) * 10), 0, (z * 10));
         Instantiate(floorTile, tilePos, Quaternion.identity);
         tilePos = new Vector3(((x + 2) * 10), 0, (z * 10));
@@ -464,9 +467,12 @@ public class dungeonConstruction : MonoBehaviour
         {
             int rX = Random.Range(0, xGridSize);
             int rZ = Random.Range(0, zGridSize);
-            Vector3 slimePos = new Vector3((rX * 10), 0, (rZ * 10));
+            Vector3 slimePos = new Vector3((rX * 10), 2, (rZ * 10));
             Instantiate(slime, slimePos, slime.transform.rotation);
         }
+
+        Vector3 bossPos = new Vector3(((xGridSize/2) * 10), 0, ((zGridSize/2) * 10));
+
     }
 	
 	public void constructPerimeter(){
