@@ -19,11 +19,16 @@ public class BAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Random.Range(0, 100) > 90)
+        if (player)
         {
-            shootIce();
+            if (GetComponent<bNav>().isStalking == true)
+            {
+                if (Random.Range(0, 100) > 97)
+                {
+                    shootIce();
+                }
+            }
         }
-
     }
 
     private void shootIce()
