@@ -14,4 +14,9 @@ public class MenuChange : MonoBehaviour
     {
         SceneManager.LoadScene("SWMenu");
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
