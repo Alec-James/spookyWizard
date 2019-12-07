@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b00d20ae149496b448860498b4d1a2fd
+guid: 2fc5304d984640b4b98041fca88c6d66
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
@@ -39,7 +39,7 @@ ModelImporter:
       takeName: Armature|ArmatureAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -59,8 +59,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.13020833
-        functionName: Douse
+      - time: 0.3580729
+        functionName: Ignite
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: ade8a57360971354198ef1bf9d54b0fe,
           type: 3}

@@ -8,11 +8,13 @@ public class spawnProjectile : MonoBehaviour
     public List<GameObject> vfx = new List<GameObject>();
 
     private GameObject effectToSpawn;
-
+    public GameObject mainCam;
     // Start is called before the first frame update
     void Start()
     {
-        effectToSpawn = vfx[0];    
+
+        effectToSpawn = vfx[0];
+        mainCam = GameObject.Find("Camera_Holder");
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class spawnProjectile : MonoBehaviour
 
         if (firePoint != null)
         {
-            vfx = Instantiate(effectToSpawn, firePoint.transform.position, Quaternion.identity);
+            vfx = Instantiate(effectToSpawn, firePoint.transform.position, transform.rotation);
 
         }
         else
