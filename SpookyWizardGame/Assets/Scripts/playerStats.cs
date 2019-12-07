@@ -65,5 +65,15 @@ public class playerStats : MonoBehaviour
 
     }
 
+    public void HealthPotion()
+    {
+
+    }
+
+    public void ManaPotion()
+    {
+
+    }
+
 
 }
