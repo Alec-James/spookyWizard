@@ -8,7 +8,10 @@ public class bNav : MonoBehaviour
     // Start is called before the first frame update
     public Transform player;
     NavMeshAgent bossAI;
-    public float chaseSpeed = 2f;
+    public float chaseSpeed = 8f;
+    public float stalkSpeed = 2f;
+    public bool isStalking = false;
+
     public bool isChasing = false;
     public float FOV = 110f; // how wide the zombie's field of view is in degrees
     void Start()
@@ -18,19 +21,32 @@ public class bNav : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-        if (Vector3.Distance(transform.position, player.position) < 15f)
+        if (player)
         {
-            Chasing();
+            if (Vector3.Distance(transform.position, player.position) > 15f)
+            {
+                isChasing = true;
+                isStalking = false;
+                Chasing();
+            }
+            else if (Vector3.Distance(transform.position, player.position) <= 15f && (Vector3.Distance(transform.position, player.position)) >= 3f)
+            {
+                isChasing = false;
+                isStalking = true;
+                Stalking();
+            }
+            else
+            {
+                bossAI.destination = transform.position;
+            }
         }
         else
         {
-            bossAI.destination = player.position;
+            bossAI.destination = transform.position;
         }
     }
-    
     void Chasing()
     {
         bossAI.speed = chaseSpeed; // actual speed of movement
@@ -38,6 +54,14 @@ public class bNav : MonoBehaviour
         
 
     }
+    void Stalking()
+    {
+        bossAI.speed = stalkSpeed; // actual speed of movement
+        bossAI.destination = player.position;
+    }
+    
+    
+    //set the target    }
     /*
     bool Targeting()
     {

@@ -22,6 +22,26 @@ public class IceAttack : MonoBehaviour
     void Update()
     {
         // Move the projectile forward towards the player's last known direction;
-        transform.position += transform.forward * speed * Time.deltaTime;
+        if (player)
+        {
+            this.GetComponent<Rigidbody>().AddForce((player.position - this.transform.position).normalized * 2f);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            Destroy(collision.other.gameObject);
+            Destroy(gameObject);
+
+        }
+        else if (collision.collider.CompareTag("Boss") || (collision.collider.CompareTag("Projectile")))
+        {
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
