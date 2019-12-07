@@ -276,7 +276,7 @@ public class dungeonConstruction : MonoBehaviour
         generateTraps();
         spawnArtifacts();
         //Uncomment this when the slimes are ready to go, guys
-        //spawnMonsters();
+        spawnMonsters();
 		nmSurface.BuildNavMesh();
     }
 
@@ -467,7 +467,7 @@ public class dungeonConstruction : MonoBehaviour
         {
             int rX = Random.Range(0, xGridSize);
             int rZ = Random.Range(0, zGridSize);
-            Vector3 slimePos = new Vector3((rX * 10), 2, (rZ * 10));
+            Vector3 slimePos = new Vector3((rX * 10), 0, (rZ * 10));
             Instantiate(slime, slimePos, slime.transform.rotation);
         }
 

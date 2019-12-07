@@ -25,6 +25,8 @@ public class goToTarget : MonoBehaviour
     public static float slowPlayerRunSpeed = 2f;
     public static float timeOut = 8f;
 
+    GameObject player; //this is the where the current player is stored
+
      
     
 
@@ -33,6 +35,10 @@ public class goToTarget : MonoBehaviour
     {
         Random.seed = (int)System.DateTime.Now.Ticks;
         nav = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player"); // finds the player in current context
+        targets[0] = player.transform;
+        
+
     }
 
     // try to find a target. if no target is found, wander. if a target is found, chase it.
@@ -82,7 +88,7 @@ public class goToTarget : MonoBehaviour
 
     }
 
-    // Check to see if the zombie can see a target. If so, return true. Else, return false.
+    // Check to see if the monster can see a target. If so, return true. Else, return false.
     bool Targeting()
     {
         if (!target)
@@ -120,14 +126,14 @@ public class goToTarget : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //print("collision with " + target.tag);
-            StartCoroutine(Pickup(other));
+            StartCoroutine(Slow(other));
             //print("end effect " + target.tag);
 
         }
     }
 
 
-    IEnumerator Pickup(Collider player)
+    IEnumerator Slow(Collider player)
     {
         //Debug.Log("ONE");
 
