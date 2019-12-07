@@ -14,7 +14,7 @@ public class Mana : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MaxMana = 100f;
+        MaxMana = 10000f;
         CurrentMana = MaxMana;
         if (manahbar != null)
             manahbar.value = CalcMana();

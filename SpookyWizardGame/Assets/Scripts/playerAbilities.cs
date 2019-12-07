@@ -15,6 +15,8 @@ public class playerAbilities : MonoBehaviour
     public GameObject torchFire;
     public GameObject torchLight;
     public Mana manaUI;
+    public AudioClip bolt;
+    public AudioClip lightClick;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,7 @@ public class playerAbilities : MonoBehaviour
         {
             if (manaUI.CurrentMana >= 20)
             {
+                gameObject.GetComponent<AudioSource>().PlayOneShot(bolt, 3.8f);
                 this.gameObject.GetComponent<playerStats>().FireboltMana();
                 vfx = Instantiate(effectToSpawn, firePoint.transform.position, firePoint.transform.rotation);
             }
@@ -74,6 +77,7 @@ public class playerAbilities : MonoBehaviour
     {
         //turn on particles
         Debug.Log("IGNITE");
+        gameObject.GetComponent<AudioSource>().PlayOneShot(lightClick, 3.8f);
         torchFire.GetComponent<ParticleSystem>().Play();
         flameOn = true;
 
@@ -90,6 +94,7 @@ public class playerAbilities : MonoBehaviour
     {
         //turns off particles
         Debug.Log("DOUSE");
+        gameObject.GetComponent<AudioSource>().PlayOneShot(lightClick, 3.8f);
         torchFire.GetComponent<ParticleSystem>().Stop();
         flameOn = false;
 

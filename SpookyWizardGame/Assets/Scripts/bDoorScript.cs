@@ -2,31 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bossDoorScript : MonoBehaviour
+public class bDoorScript : MonoBehaviour
 {
-    public bool moveDoor = false;
-    public bool closeDoor = false;
+    bool moveDoor;
+    bool closeDoor;
     private int continueMoving = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveDoor = false;
+        closeDoor = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.moveDoor == true)
+        //Debug.Log(moveDoor);
+        if (moveDoor == true)
         {
+            Debug.Log("Opening Boss Door...");
             transform.Translate(Vector2.right * 1.2f * Time.deltaTime);
             continueMoving += 1;
         }
 
         if (continueMoving >= 500)
-            stopDoor();
-
-        if (this.closeDoor == true)
         {
+            Debug.Log("Stopping Boss Door...");
+            stopDoor();
+        }
+
+        if (closeDoor == true)
+        {
+            Debug.Log("Closing Boss Door...");
             transform.Translate(Vector2.left * 1.2f * Time.deltaTime);
             continueMoving += 1;
         }
@@ -35,18 +42,20 @@ public class bossDoorScript : MonoBehaviour
 
     public void openDoor()
     {
-        this.moveDoor = true;
+        Debug.Log("OPen door being called");
+        moveDoor = true;
+        Debug.Log("After Move Set " + moveDoor);
     }
 
     public void stopDoor()
     {
-        this.moveDoor = false;
-        this.closeDoor = false;
+        moveDoor = false;
+        closeDoor = false;
         continueMoving = 0;
     }
 
     public void sealDoor()
     {
-        this.closeDoor = true;
+        closeDoor = true;
     }
 }

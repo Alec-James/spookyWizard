@@ -12,9 +12,12 @@ public class playerStats : MonoBehaviour
     Health healthUI;
     bool isDepleted;
 
+    public dungeonConstruction dC;
+    public int collectedArtifacts = 0;
 
 
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,8 @@ public class playerStats : MonoBehaviour
 
         healthUI = GameObject.Find("Health").GetComponent<Health>();
         manaUI = GameObject.Find("Magic").GetComponent<Mana>();
+
+        dC = GameObject.Find("dungeonMaster").GetComponent<dungeonConstruction>();
 
     }
 
@@ -86,6 +91,16 @@ public class playerStats : MonoBehaviour
     public void ManaPotion()
     {
 
+    }
+
+    public void collectArtifact()
+    {
+        collectedArtifacts += 1;
+        if (collectedArtifacts == 3)
+        {
+            Debug.Log("Opening Door Singleton");
+            dC.moveDoor();
+        }
     }
 
 

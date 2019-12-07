@@ -64,14 +64,14 @@ public class goToTarget : MonoBehaviour
                 Vector2 vec2 = GetRandomOnCircle(Random.Range(1.0f, 4.0f));
 
                 nav.destination = new Vector3(transform.position.x + vec2.x, transform.position.y, transform.position.z + vec2.y);
-                print("wandering change " + gameObject.name + " " + nav.destination);
+                //print("wandering change " + gameObject.name + " " + nav.destination);
                 nav.speed = wanderingSpeed;
 
             }
             else
             { // play an idle animation
                 nav.destination = transform.position;
-                print("idle change " + gameObject.name);
+                //print("idle change " + gameObject.name);
                 nav.speed = 0f;
 
             }
@@ -84,7 +84,7 @@ public class goToTarget : MonoBehaviour
 
         nav.destination = target.position; //set the target
         nav.speed = chaseSpeed; // actual speed of movement
-        print("chasing" + target.tag);
+        //print("chasing" + target.tag);
 
     }
 
@@ -109,7 +109,7 @@ public class goToTarget : MonoBehaviour
 
                     target = targets[0];
                     state = oozeState.chasing;
-                    print(hit.collider.gameObject.tag);
+                    //print(hit.collider.gameObject.tag);
                     return true;
                 }
 

@@ -294,7 +294,7 @@ public class dungeonConstruction : MonoBehaviour
 
     public void moveDoor()
     {
-        bossDoor.GetComponent<bossDoorScript>().openDoor();
+        bossDoor.GetComponent<bDoorScript>().openDoor();
     }
 
     public void printDoorways(bool[] doorways)

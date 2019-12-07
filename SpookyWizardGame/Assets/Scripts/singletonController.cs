@@ -23,6 +23,9 @@ public class singletonController : MonoBehaviour
     {
         collectedArtifacts += 1;
         if (collectedArtifacts == 3)
+        {
+            Debug.Log("Opening Door Singleton");
             dC.moveDoor();
+        }
     }
 }

@@ -7,29 +7,29 @@ public class ArtCount : MonoBehaviour
 {
     public Text text,unlocked;
     public int count=0;
-    public bool found=false;
+    GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         if (text != null)
         {
-            text.text = count.ToString()+" of 3";
+            text.text = player.GetComponent<playerStats>().collectedArtifacts.ToString()+" of 3";
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (count == 3)
+        if (player.GetComponent<playerStats>().collectedArtifacts == 3)
         {
-            unlocked.text = "All artifacts found. Door Unlocked!";
-            this.enabled = false;
+            unlocked.text = "The Seal Has Been Broken!";
+            
         }
-        if (found)
+        if (player.GetComponent<playerStats>().collectedArtifacts <= 3)
         {
-            count++;
-            found = false;
-            text.text = count.ToString() + " of 3";
+            text.text = player.GetComponent<playerStats>().collectedArtifacts.ToString() + " of 3";
         }
     }
 }
