@@ -13,7 +13,7 @@ public class BAttack : MonoBehaviour
     //layer = Gam
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame

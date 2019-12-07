@@ -50004,7 +50004,7 @@ MonoBehaviour:
   waterTrap: {fileID: 4854543744501447786, guid: 071aaf58341654e42b5a6e943b7fe381,
     type: 3}
   slime: {fileID: 4359973420450966414, guid: 004daa7d259f1df40acc2a5367f4a46d, type: 3}
-  boss: {fileID: 0}
+  boss: {fileID: 1752338216546914426, guid: 440b4641136c4844a9bb8ebf9b166c4c, type: 3}
   bossDoor: {fileID: 1375891493485384, guid: f58dcf1faed060e48af3b1ad7c749ca9, type: 3}
   xGridSize: 10
   zGridSize: 10
@@ -52056,10 +52056,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8a57360971354198ef1bf9d54b0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   firePoint: {fileID: 538425761}
   vfx:
   - {fileID: 4740432170551069689, guid: 3cb81e3d90cdee444963a726322b6bcd, type: 3}
   fireRate: 1
+  flameOn: 1
   torchFire: {fileID: 46743971}
   torchLight: {fileID: 2054105130}
 --- !u!114 &1457794612
@@ -52074,6 +52076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662bcb2970f39864984a3aacf0a330f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: 100
+  playerMana: 100
 --- !u!114 &1457794613
 MonoBehaviour:
   m_ObjectHideFlags: 0

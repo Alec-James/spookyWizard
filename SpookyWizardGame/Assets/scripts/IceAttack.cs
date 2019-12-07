@@ -11,7 +11,7 @@ public class IceAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector3 playerPos = new Vector3(player.position.x, player.position.y, player.position.z);
 
         // Aim bullet in player's direction.

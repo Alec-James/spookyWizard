@@ -16,8 +16,10 @@ public class bNav : MonoBehaviour
     public float FOV = 110f; // how wide the zombie's field of view is in degrees
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         bossAI = GetComponent<NavMeshAgent>();
         bossAI.destination = player.position;
+
 
     }
     // Update is called once per frame

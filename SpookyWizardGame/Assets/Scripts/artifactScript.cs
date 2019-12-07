@@ -15,4 +15,13 @@ public class artifactScript : MonoBehaviour
     {
         transform.Rotate(0, 0, 3, Space.Self);
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            singletonController.collectArtifact();
+            Destroy(gameObject);
+        }
+    }
 }

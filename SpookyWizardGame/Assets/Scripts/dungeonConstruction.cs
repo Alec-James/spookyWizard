@@ -472,6 +472,7 @@ public class dungeonConstruction : MonoBehaviour
         }
 
         Vector3 bossPos = new Vector3(((xGridSize/2) * 10), 0, ((zGridSize/2) * 10));
+        Instantiate(boss, bossPos, boss.transform.rotation);
 
     }
 	
