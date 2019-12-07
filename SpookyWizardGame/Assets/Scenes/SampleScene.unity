@@ -52064,6 +52064,7 @@ MonoBehaviour:
   flameOn: 1
   torchFire: {fileID: 46743971}
   torchLight: {fileID: 2054105130}
+  manaUI: {fileID: 2032866211}
 --- !u!114 &1457794612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52076,8 +52077,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662bcb2970f39864984a3aacf0a330f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
-  playerMana: 100
 --- !u!114 &1457794613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52655,6 +52654,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7185023670703866982, guid: bddbdabc181732b4684fc05315025ad6,
+        type: 3}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 2017975475}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bddbdabc181732b4684fc05315025ad6, type: 3}
 --- !u!1 &1873821151
@@ -55096,6 +55100,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1997113771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2017975475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7185023670703866981, guid: bddbdabc181732b4684fc05315025ad6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1773291290}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2032866208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7185023669066248175, guid: bddbdabc181732b4684fc05315025ad6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1773291290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2032866210 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7185023669066248161, guid: bddbdabc181732b4684fc05315025ad6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1773291290}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032866208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2032866211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032866208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08dcb4b4a4529c4f821b8826a65d8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manahbar: {fileID: 2032866210}
+  player: {fileID: 1457794609}
 --- !u!1 &2054105130
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class playerAbilities : MonoBehaviour
     public bool flameOn = true;
     public GameObject torchFire;
     public GameObject torchLight;
+    public Mana manaUI;
 
     // Start is called before the first frame update
     void Start()
@@ -57,8 +58,11 @@ public class playerAbilities : MonoBehaviour
 
         if (firePoint != null)
         {
-            this.gameObject.GetComponent<playerStats>().FireboltMana();
-            vfx = Instantiate(effectToSpawn, firePoint.transform.position, firePoint.transform.rotation);
+            if (manaUI.CurrentMana >= 20)
+            {
+                this.gameObject.GetComponent<playerStats>().FireboltMana();
+                vfx = Instantiate(effectToSpawn, firePoint.transform.position, firePoint.transform.rotation);
+            }
         }
         else
         {

@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class playerStats : MonoBehaviour
 {
-    public int playerHealth = 100;
-    public int playerMana = 100;
+    //public int playerHealth = 100;
+    //public int playerMana = 100;
     bool torchOn;
+
+    Mana manaUI;
+    Health healthUI;
+    bool isDepleted;
+
+
+
+    
     // Start is called before the first frame update
     void Start()
     {
         torchOn = this.gameObject.GetComponent<playerAbilities>().flameOn;
+
+        healthUI = GameObject.Find("Health").GetComponent<Health>();
+        manaUI = GameObject.Find("Magic").GetComponent<Mana>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerHealth == 0)
-        {
-            //DIE
-        }
+        torchOn = this.gameObject.GetComponent<playerAbilities>().flameOn;
+
 
         //if the torch is on, drain mana
         if (torchOn)
@@ -32,27 +41,31 @@ public class playerStats : MonoBehaviour
             RegenMana();
         }
 
+       
+
 
     }
 
     public void IgniteMana()
     {
+        manaUI.consumeMana(10f);
         Debug.Log("IGNITE MANA DECREASE");
     }
 
     public void TorchMana()
     {
-
+        manaUI.consumeMana(.05f);
     }
 
     public void RegenMana()
     {
-
+        manaUI.consumeMana(-.03f);
     }
 
     public void FireboltMana()
     {
-
+        
+        manaUI.consumeMana(20f);
     }
 
     public void Death()

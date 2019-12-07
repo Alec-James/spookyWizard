@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MaxHealth = 20f;
+        MaxHealth = 100f;
         CurrentHealth = MaxHealth;
         if(healthbar!=null)
             healthbar.value = CalcHealth();
@@ -21,8 +21,8 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-            DealDamage(6);
+        //if (Input.GetKeyDown(KeyCode.X))
+            //DealDamage(1);
     }
 
     void DealDamage(float dmg)
