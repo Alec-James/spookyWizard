@@ -260,7 +260,8 @@ public class dungeonConstruction : MonoBehaviour
     public GameObject slime;
     public GameObject boss;
     public GameObject bossDoor;
-	public mapGrid dungeon;
+    public GameObject instantBossDoor;
+    public mapGrid dungeon;
 	public int xGridSize;
 	public int zGridSize;
 
@@ -286,15 +287,18 @@ public class dungeonConstruction : MonoBehaviour
 
     }
 	
-	IEnumerator waitUpdate(){
+	//IEnumerator waitUpdate(){
 		
-		yield return new WaitForSeconds(100);
+		//yield return new WaitForSeconds(100);
 		
-	}
+	//}
 
     public void moveDoor()
     {
-        bossDoor.GetComponent<bDoorScript>().openDoor();
+        Debug.Log("In Move Doore");
+        instantBossDoor.GetComponent<bDoorScript>().openDoor();
+        //bossDoor.GetComponent<bDoorScript>().newMoveDoor = true;
+
     }
 
     public void printDoorways(bool[] doorways)
@@ -394,7 +398,7 @@ public class dungeonConstruction : MonoBehaviour
         int z = zGridSize-1;
 
         Vector3 doorPos = new Vector3(((x - .77f) * 10), 2.5f, (z * 10));
-        Instantiate(bossDoor, doorPos, bossDoor.transform.rotation);
+        instantBossDoor = Instantiate(bossDoor, doorPos, bossDoor.transform.rotation);
 
         //Floor Tiles
         Vector3 tilePos = new Vector3((x * 10), 0, (z * 10));

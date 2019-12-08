@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class bDoorScript : MonoBehaviour
 {
-    bool moveDoor;
-    bool closeDoor;
+    private bool newMoveDoor = false;
+    private bool closeDoor = false;
     private int continueMoving = 0;
     // Start is called before the first frame update
     void Start()
     {
-        moveDoor = false;
-        closeDoor = false;
+        Debug.Log("START BOIIIII");
+        //newMoveDoor = false;
+        //openDoor();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(moveDoor);
-        if (moveDoor == true)
+
+        //Debug.Log(newMoveDoor);
+        if (newMoveDoor == true)
         {
             Debug.Log("Opening Boss Door...");
             transform.Translate(Vector2.right * 1.2f * Time.deltaTime);
@@ -43,19 +45,21 @@ public class bDoorScript : MonoBehaviour
     public void openDoor()
     {
         Debug.Log("OPen door being called");
-        moveDoor = true;
-        Debug.Log("After Move Set " + moveDoor);
+        newMoveDoor = true;
+        Debug.Log("After Move Set " + newMoveDoor);
     }
 
     public void stopDoor()
     {
-        moveDoor = false;
+        Debug.Log("Stop door being called");
+        newMoveDoor = false;
         closeDoor = false;
         continueMoving = 0;
     }
 
     public void sealDoor()
     {
+        Debug.Log("Seal door being called");
         closeDoor = true;
     }
 }
