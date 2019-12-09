@@ -9,7 +9,9 @@ public class Pause : MonoBehaviour
     //bool cursorLocked = false;
     void Start()
     {
+
         pauseMenuUI.SetActive(false);
+        Resume();
     }
     // Update is called once per frame
     void Update()

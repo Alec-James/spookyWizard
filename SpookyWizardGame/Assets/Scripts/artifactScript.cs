@@ -5,6 +5,7 @@ using UnityEngine;
 public class artifactScript : MonoBehaviour
 {
     GameObject player;
+    public AudioClip pickupSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class artifactScript : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Debug.Log("Collided with player");
+            gameObject.GetComponent<AudioSource>().PlayOneShot(pickupSound, 50f);
             player.GetComponent<playerStats>().collectArtifact();
             Destroy(gameObject);
         }

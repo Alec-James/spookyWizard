@@ -5,10 +5,12 @@ using UnityEngine;
 public class sealRoomScript : MonoBehaviour
 {
     dungeonConstruction dc;
+
     // Start is called before the first frame update
     void Start()
     {
         dc = GameObject.Find("dungeonMaster").GetComponent<dungeonConstruction>();
+
     }
 
     // Update is called once per frame
@@ -23,6 +25,8 @@ public class sealRoomScript : MonoBehaviour
         if (other.gameObject.tag.Equals("Player"))
         {
             dc.closeDoor();
+            GameObject.Find("AudioController").GetComponent<musicController>().playBossMusic();
+
         }
         
     }

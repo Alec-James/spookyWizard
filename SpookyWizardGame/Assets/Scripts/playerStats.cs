@@ -16,6 +16,7 @@ public class playerStats : MonoBehaviour
 
     public dungeonConstruction dC;
     public int collectedArtifacts = 0;
+    public AudioClip pickupSound;
 
 
 
@@ -117,11 +118,13 @@ public class playerStats : MonoBehaviour
         }
         if (collision.CompareTag("potion"))
         {
+            collision.GetComponent<AudioSource>().PlayOneShot(pickupSound, 50f);
             healthUI.DealDamage(-100);
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("manaPotion"))
         {
+            collision.GetComponent<AudioSource>().PlayOneShot(pickupSound, 50f);
             manaUI.consumeMana(-50);
             Destroy(collision.gameObject);
         }

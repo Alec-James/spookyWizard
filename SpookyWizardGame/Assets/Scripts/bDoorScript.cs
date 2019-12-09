@@ -76,7 +76,7 @@ public class bDoorScript : MonoBehaviour
 
     public void sealDoor()
     {
-        gameObject.GetComponent<AudioSource>().PlayOneShot(doorClose, 4f);
+        gameObject.GetComponent<AudioSource>().PlayOneShot(doorClose, 1f);
         Debug.Log("DoorSEAL");
         closeDoor = true;
     }
