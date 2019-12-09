@@ -33,6 +33,7 @@ public class playerAbilities : MonoBehaviour
             nextFire = Time.time + fireRate;
             Debug.Log("animation should play");
             anim.SetBool("attacking", true);
+            Debug.Log("After animation bool is set to true");
             //SpawnVFX();
         }
         else
