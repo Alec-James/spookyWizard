@@ -11,6 +11,8 @@ public class playerStats : MonoBehaviour
     Mana manaUI;
     Health healthUI;
     bool isDepleted;
+    float regenRate = -0.03f;
+
 
     public dungeonConstruction dC;
     public int collectedArtifacts = 0;
@@ -40,13 +42,14 @@ public class playerStats : MonoBehaviour
         if (torchOn)
         {
             TorchMana();
-        }else if (!torchOn)
+        }
+        else if (!torchOn)
         {
-           //regens mana if torch is off
+            //regens mana if torch is off
             RegenMana();
         }
 
-       
+
 
 
     }
@@ -64,12 +67,12 @@ public class playerStats : MonoBehaviour
 
     public void RegenMana()
     {
-        manaUI.consumeMana(-.03f);
+        manaUI.consumeMana(regenRate);
     }
 
     public void FireboltMana()
     {
-        
+
         manaUI.consumeMana(20f);
     }
 
@@ -98,10 +101,29 @@ public class playerStats : MonoBehaviour
         collectedArtifacts += 1;
         if (collectedArtifacts == 3)
         {
+            manaUI.MaxMana += 50;
+            healthUI.MaxHealth += 25;
+            regenRate += -0.07f;
             Debug.Log("Opening Door Singleton");
             dC.moveDoor();
         }
     }
 
-
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            healthUI.DealDamage(25);
+        }
+        if (collision.CompareTag("potion"))
+        {
+            healthUI.DealDamage(-100);
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("manaPotion"))
+        {
+            manaUI.consumeMana(-50);
+            Destroy(collision.gameObject);
+        }
+    }
 }

@@ -10,6 +10,7 @@ public class BAttack : MonoBehaviour
     public GameObject iceShot;
     public Transform LeftCast;
     public Transform player;
+    public AudioClip iceAttack;
     //layer = Gam
     void Start()
     {
@@ -35,7 +36,8 @@ public class BAttack : MonoBehaviour
     {
         GameObject tempBullet;
         //player = playerPos;
-        tempBullet = Instantiate(iceShot) as GameObject;
+        gameObject.GetComponent<AudioSource>().PlayOneShot(iceAttack, 1f);
+        tempBullet = Instantiate(iceShot,LeftCast.position , gameObject.transform.rotation) as GameObject;
         tempBullet.transform.position = LeftCast.position;
     }
 }

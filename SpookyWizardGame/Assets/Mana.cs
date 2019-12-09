@@ -4,20 +4,22 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+
 public class Mana : MonoBehaviour
 {
     public float CurrentMana { get; set; }
     public float MaxMana { get; set; }
-    public Slider manahbar;
+    public Slider manaBar;
 
     public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        MaxMana = 10000f;
+        MaxMana = 100f;
         CurrentMana = MaxMana;
-        if (manahbar != null)
-            manahbar.value = CalcMana();
+        if (manaBar != null)
+            manaBar.value = CalcMana();
     }
 
     // Update is called once per frame
@@ -30,19 +32,25 @@ public class Mana : MonoBehaviour
     public void consumeMana(float dmg)
     {
         CurrentMana -= dmg;
-        if (manahbar != null)
-            manahbar.value = CalcMana();
+        if (manaBar != null)
+            manaBar.value = CalcMana();
 
         if (CurrentMana <= 0)
         {
+            CurrentMana = 0;
+            manaBar.value = 0;
             player.GetComponent<playerAbilities>().Douse();
         }
-
+        if (CurrentMana > MaxMana)
+        {
+            CurrentMana = MaxMana;
+            manaBar.value = MaxMana;
+        }
     }
+
     float CalcMana()
     {
         return CurrentMana / MaxMana;
-
     }
    
 }

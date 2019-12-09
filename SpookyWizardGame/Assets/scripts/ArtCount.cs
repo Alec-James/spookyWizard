@@ -24,7 +24,7 @@ public class ArtCount : MonoBehaviour
     {
         if (player.GetComponent<playerStats>().collectedArtifacts == 3)
         {
-            unlocked.text = "The Seal Has Been Broken!";
+            //unlocked.text = "The Seal Has Been Broken!";
             
         }
         if (player.GetComponent<playerStats>().collectedArtifacts <= 3)

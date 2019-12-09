@@ -25,15 +25,19 @@ public class Health : MonoBehaviour
             //DealDamage(1);
     }
 
-    void DealDamage(float dmg)
+    public void DealDamage(float dmg)
     {
         CurrentHealth -= dmg;
         if(healthbar!=null)
             healthbar.value = CalcHealth();
         if (CurrentHealth <= 0)
         {
-
             Die();
+        }
+        if(CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+            healthbar.value = MaxHealth;
         }
     }
     float CalcHealth()

@@ -261,13 +261,21 @@ public class dungeonConstruction : MonoBehaviour
     public GameObject boss;
     public GameObject bossDoor;
     public GameObject instantBossDoor;
+    public GameObject healhPotion;
+    public GameObject manaPotion;
+    public GameObject bossNode;
+    public GameObject finalBoss;
     public mapGrid dungeon;
-	public int xGridSize;
-	public int zGridSize;
+	private int xGridSize;
+	private int zGridSize;
+    public GameObject[] nodeLayout = new GameObject[18];
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Start Construction");
+        xGridSize = difficultyOptions.xGrid;
+        zGridSize = difficultyOptions.zGrid;
 		dungeon = new mapGrid(xGridSize, zGridSize);
         setStartTiles();
         constructPerimeter();
@@ -286,19 +294,21 @@ public class dungeonConstruction : MonoBehaviour
     {  
 
     }
-	
-	//IEnumerator waitUpdate(){
-		
-		//yield return new WaitForSeconds(100);
-		
-	//}
+
+    public void closeDoor()
+    {
+        instantBossDoor.GetComponent<bDoorScript>().stopDoor();
+        instantBossDoor.GetComponent<bDoorScript>().sealDoor();
+        Destroy(GameObject.FindGameObjectWithTag("Boss"));
+        Vector3 fbPos = new Vector3(((xGridSize + 1) * 10), 1, ((zGridSize - 1) * 10));
+        Instantiate(finalBoss, fbPos, finalBoss.transform.rotation);
+        Destroy(GameObject.FindGameObjectWithTag("killme"));
+    }
 
     public void moveDoor()
     {
-        Debug.Log("In Move Doore");
+        Debug.Log("In Move Door");
         instantBossDoor.GetComponent<bDoorScript>().openDoor();
-        //bossDoor.GetComponent<bDoorScript>().newMoveDoor = true;
-
     }
 
     public void printDoorways(bool[] doorways)
@@ -320,16 +330,21 @@ public class dungeonConstruction : MonoBehaviour
         typeChoices = new int[] { 1, 2, 3, 4, 11 };
         typeSet = setTile(typeChoices, xGridSize - 1, zGridSize - 1);
         dungeon.getTile(xGridSize - 1, zGridSize - 1).setTileType(typeSet);
+        Debug.Log("Start Tiles Set");
     }
 
     public void spawnArtifacts()
     {
-        int[] locs = { 0, 0, 0 };
+        Debug.Log("Spawning Items");
+        int[] locs = {0, 0, 0};
         for(int spawner = 0; spawner < 3; spawner++)
         {
             int rX = Random.Range(0, xGridSize);
-            while(rX == locs[0] || rX == locs[1] || rX == locs[2])
+            while (rX == locs[0] || rX == locs[1] || rX == locs[2])
+            {
+                Debug.Log("Testing Locs");
                 rX = Random.Range(0, xGridSize);
+            }
             int rZ = Random.Range(0, zGridSize);
             Vector3 artifactPos = new Vector3((rX * 10), 1, (rZ * 10));
             switch (spawner)
@@ -337,15 +352,38 @@ public class dungeonConstruction : MonoBehaviour
                 case 0:
                     artifactPos = new Vector3((rX * 10), 2, (rZ * 10));
                     Instantiate(artifacts[0], artifactPos, artifacts[0].transform.rotation);
+                    locs[0] = rX;
                     break;
                 case 1:
                     Instantiate(artifacts[1], artifactPos, artifacts[1].transform.rotation);
+                    locs[1] = rX;
                     break;
                 case 2:
                     Instantiate(artifacts[2], artifactPos, artifacts[2].transform.rotation);
+                    locs[2] = rX;
                     break;
                 default:
                     break;
+            }
+        }
+        
+        int hpCount = (int)(xGridSize * .3f);
+        int mpCount = (int)(xGridSize * .3f);
+        while ((hpCount > 0) || (mpCount > 0))
+        {
+            int rX = Random.Range(0, xGridSize);
+            int rZ = Random.Range(0, zGridSize);
+            Vector3 potionPos = new Vector3((rX * 10), 1, (rZ * 10));
+            int type = Random.Range(0, 2);
+            if (hpCount > 0 && type == 0)
+            {
+                Instantiate(healhPotion, potionPos, healhPotion.transform.rotation);
+                hpCount--;
+            }
+            if (mpCount > 0 && type == 1)
+            {
+                Instantiate(manaPotion, potionPos, manaPotion.transform.rotation);
+                mpCount--;
             }
         }
     }
@@ -376,6 +414,7 @@ public class dungeonConstruction : MonoBehaviour
 
     public void generateTraps() 
     {
+        Debug.Log("Setting traps");
         int trapCount = (int)((xGridSize*zGridSize)*0.1);
         int trapsPlaced = 0;
         for (int x = 0; x <= xGridSize - 1; x += 1){
@@ -394,6 +433,7 @@ public class dungeonConstruction : MonoBehaviour
 
     public void generateBossRoom()
     {
+        Debug.Log("Building Boss Room");
         int x = xGridSize;
         int z = zGridSize-1;
 
@@ -441,12 +481,50 @@ public class dungeonConstruction : MonoBehaviour
         tilePos = new Vector3(((x + 2) * 10), 5, ((z - 2) * 10));
         Instantiate(ceilingTile, tilePos, Quaternion.identity);
 
+        //Boss Nodes
+        tilePos = new Vector3((x * 10), 1, (z * 10));
+        nodeLayout[0] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 1) * 10), 1, (z * 10));
+        nodeLayout[1] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 2) * 10), 1, (z * 10));
+        nodeLayout[2] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3((x * 10), 1, ((z - 1) * 10));
+        nodeLayout[3] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3((x * 10), 1, ((z - 2) * 10));
+        nodeLayout[4] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 1) * 10), 1, ((z - 1) * 10));
+        nodeLayout[5] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 2) * 10), 1, ((z - 1) * 10));
+        nodeLayout[6] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 1) * 10), 1, ((z - 2) * 10));
+        nodeLayout[7] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 2) * 10), 1, ((z - 2) * 10));
+        nodeLayout[8] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3((x * 10), 1, (z * 10));
+        nodeLayout[9] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 1) * 10), 3, (z * 10));
+        nodeLayout[10] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 2) * 10), 3, (z * 10));
+        nodeLayout[11] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3((x * 10), 3, ((z - 1) * 10));
+        nodeLayout[12] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3((x * 10), 3, ((z - 2) * 10));
+        nodeLayout[13] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 1) * 10), 3, ((z - 1) * 10));
+        nodeLayout[14] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 2) * 10), 3, ((z - 1) * 10));
+        nodeLayout[15] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 1) * 10), 3, ((z - 2) * 10));
+        nodeLayout[16] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+        tilePos = new Vector3(((x + 2) * 10), 3, ((z - 2) * 10));
+        nodeLayout[17] = (Instantiate(bossNode, tilePos, Quaternion.identity));
+
         //Perimeter Walls
         float zNorthAdj = -3.5f + ((xGridSize + 3) * 10);
         float xWestAdj = -3.5f + (zGridSize * 10);
         for(int wallX = 0; wallX < 3; wallX++)
         {
-            Vector3 posEastWall = new Vector3(((wallX + x) * 10), 2.5f, (70 - 6f));
+            Vector3 posEastWall = new Vector3(((wallX + x) * 10), 2.5f, ((zGridSize*10 -30) - 6f));
             Vector3 posWestWall = new Vector3(((wallX + x) * 10), 2.5f, xWestAdj);
             Instantiate(sideWallV, posEastWall, sideWallV.transform.rotation);
             Instantiate(sideWallV, posWestWall, sideWallV.transform.rotation);
@@ -466,7 +544,7 @@ public class dungeonConstruction : MonoBehaviour
      */
     public void spawnMonsters()
     {
-        int slimeCount = (int)(xGridSize*0.3);
+        int slimeCount = (int)(xGridSize*0.5);
         for(int sc = 0; sc < slimeCount; sc++)
         {
             int rX = Random.Range(0, xGridSize);
@@ -481,6 +559,7 @@ public class dungeonConstruction : MonoBehaviour
     }
 	
 	public void constructPerimeter(){
+        Debug.Log("Constructing Perimeter");
 		for(int z = 0; z <= zGridSize-1; z++){
 			float zNorthAdj = -3.5f + (xGridSize*10);
 			Vector3 posSouthWall = new Vector3(-6f, 2.5f, (z*10));

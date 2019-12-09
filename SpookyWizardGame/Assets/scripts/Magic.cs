@@ -28,9 +28,15 @@ public class Magic : MonoBehaviour
     {
         CurrentMagic -= dmg;
         Magicbar.value = CalcMagic();
-        if (CurrentMagic <= 0)
+        if (CurrentMagic < 0)
         {
-
+            CurrentMagic = 0;
+            Magicbar.value = 0;
+        }
+        if (CurrentMagic > MaxMagic)
+        {
+            CurrentMagic = MaxMagic;
+            Magicbar.value = MaxMagic;
         }
     }
     float CalcMagic()

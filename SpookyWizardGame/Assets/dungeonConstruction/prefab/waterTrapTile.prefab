@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2b5a9818c462442a779602d91952b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterParticles: {fileID: 5168148715430633027, guid: 92703716080f9e647b55c1e674e7e56c,
+  waterParticles: {fileID: 5168148715430633025, guid: 92703716080f9e647b55c1e674e7e56c,
     type: 3}
 --- !u!65 &3200630832773843562
 BoxCollider:

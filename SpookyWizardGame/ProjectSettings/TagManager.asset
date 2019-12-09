@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Boss
+  - artifact
+  - Projectile
+  - potion
+  - manaPotion
+  - Waypoint
+  - finalBoss
+  - killme
+  - firebolt
   layers:
   - Default
   - TransparentFX

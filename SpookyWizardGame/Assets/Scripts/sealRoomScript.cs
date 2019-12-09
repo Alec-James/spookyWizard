@@ -20,6 +20,10 @@ public class sealRoomScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //To Do: Detect if player entered the trigger.
-        dc.bossDoor.GetComponent<bDoorScript>().sealDoor();
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            dc.closeDoor();
+        }
+        
     }
 }

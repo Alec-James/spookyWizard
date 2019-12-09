@@ -5,7 +5,10 @@ using UnityEngine;
 public class waterTrap : MonoBehaviour
 {
     GameObject player;
-    public GameObject waterParticles;
+    public ParticleSystem waterParticles;
+    ParticleSystem pS;
+    private Vector3 vertPos = new Vector3(0f, 4f, 0f);
+    public AudioClip splash;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,9 @@ public class waterTrap : MonoBehaviour
         //To Do: When player collides with trap, spawn water and deactivate flame.
         if (other.CompareTag("Player"))
         {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(splash, 1f);
+            pS = Instantiate(waterParticles, gameObject.transform.position + vertPos, waterParticles.transform.rotation);
+            pS.Play();
             player.GetComponent<playerAbilities>().anim.SetBool("waterTrap", true);
         }
     }

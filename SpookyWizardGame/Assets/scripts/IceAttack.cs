@@ -5,8 +5,9 @@ using UnityEngine;
 public class IceAttack : MonoBehaviour
 {
     public Transform player;
+  
     
-    public float speed = 4f;
+    private float speed = 25f;
     
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,10 @@ public class IceAttack : MonoBehaviour
         Vector3 playerPos = new Vector3(player.position.x, player.position.y, player.position.z);
 
         // Aim bullet in player's direction.
-        transform.rotation = Quaternion.LookRotation(playerPos);
+        //transform.rotation = Quaternion.LookRotation(playerPos);
+
+        
+        
     }
 
     // Update is called once per frame
@@ -24,23 +28,31 @@ public class IceAttack : MonoBehaviour
         // Move the projectile forward towards the player's last known direction;
         if (player)
         {
-            this.GetComponent<Rigidbody>().AddForce((player.position - this.transform.position).normalized * 2f);
+            if (speed != 0)
+            {
+                transform.position += transform.forward * (speed * Time.deltaTime);
+            }
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            Destroy(collision.other.gameObject);
+            //Destroy(collision.other.gameObject);
             Destroy(gameObject);
 
         }
-        else if (collision.collider.CompareTag("Boss") || (collision.collider.CompareTag("Projectile")))
+        else if (collision.CompareTag("Boss")) {
+
+            Debug.Log("Hit Boss");
+            
+        }
+        else if (collision.CompareTag("Projectile"))
         {
 
         }
-        else
-        {
+        else{
+            Debug.Log("Hit NOt player");
             Destroy(gameObject);
         }
     }
